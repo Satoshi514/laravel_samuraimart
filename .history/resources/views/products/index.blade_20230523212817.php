@@ -14,9 +14,10 @@
     <td>{{ $product->descroption }}</td>
     <td>{{ $product->price }}</td>
     <td>{{ $product->category_id }}</td>
+    <td>
         <a href="{{ route('products.show',$product->id)}}">Show</a>
         <a href="{{ route('products.edit',$product->id)}}">Edit</a> 
-    <td>
+    </td>
          <form action= "{{ route('products.destroy',$product->id) }}" method="POST">
           <a href="{{ route('products.show',$product->id) }}">Show</a>
           <a href="{{ route('products.edit',$product->id) }}">Edit</a>
@@ -24,7 +25,6 @@
           @method('DELETE')
           <button type="submit">Delete</button>
          </form>
-    </td>
   </tr>
   @endforeach
 </table>

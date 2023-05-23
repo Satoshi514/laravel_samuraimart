@@ -25,7 +25,7 @@
     <strong>Category:</strong>
     <select name="category_id">
       @foreach($categories as $category)
-          @if($category->id == $product->category_id)
+          @if($category-id == $product->category_id)
              <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
           @else
              <option value="{{ $category->id }}">{{ $category->name }}</option>
