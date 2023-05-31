@@ -13,7 +13,7 @@ use Overtrue\LaravelFavorite\Traits\Favoriter;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, Favoriter;
+    use HasApiTokens, HasFactory, Notifiable;
 
     public function sendEmailVerificationNotification()
     {
@@ -32,9 +32,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
-        'postal_code',
-        'address',
-        'phone',
         'password',
     ];
 

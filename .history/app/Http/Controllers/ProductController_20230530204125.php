@@ -18,13 +18,14 @@ class ProductController extends Controller
     {
         $products = Product::paginate(10);
         if($request->category !== null) {
-            $products = Product::where('category_id',$request->category)->sortable()->paginate(10);
+            $products = Product::where('category_id',$request->category)->paginate(10);
             $total_count = Product::where('category_id', $request->category)->count();
             $category = Category::find($request->category);
         } else {
-            $products = Product::sorable()->paginate(10);
+            $products = Product::paginate(10);
             $total_count = "";
             $category = null;
+        }
         }
         $categories = Category::all();
         $major_category_names = Category::pluck('major_category_name')->unique();

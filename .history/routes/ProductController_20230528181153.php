@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -14,36 +13,19 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $products = Product::paginate(10);
-        if($request->category !== null) {
-            $products = Product::where('category_id',$request->category)->sortable()->paginate(10);
-            $total_count = Product::where('category_id', $request->category)->count();
-            $category = Category::find($request->category);
-        } else {
-            $products = Product::sorable()->paginate(10);
-            $total_count = "";
-            $category = null;
-        }
-        $categories = Category::all();
-        $major_category_names = Category::pluck('major_category_name')->unique();
+        $products = Product::all();
 
-        return view('products.index', compact('products','category','categories','major_category_names','total_count'));
+        return view('products.index', compact('products'));
     }
-
-        public function favorite(Product $product) {
-            Auth::user()->togglefavorite($product);
-
-            return back();
-        }  
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         $categories = Category::all();
 
@@ -76,9 +58,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $reviews = $product->reviews()->get();
-
-        return view('products.show', compact('product', 'reviews'));
+        return view('products.show',compact('product'));
     }
 
     /**

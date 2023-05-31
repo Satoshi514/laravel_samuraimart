@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReviewController;
 
 /*
@@ -20,15 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(UserController::class)->group(function(){
-    Route::get('users/mypage','mypage')->name('mypage');
-    Route::get('users/mypage/edit', 'edit')->name('mypage.edit');
-    Route::get('users/mypage','update')->name('mypage.update');
-});
-
 Route::post('reviwes',[ReviewController::class, 'store'])->name('reviews.store');
 
-Route::get('products/{product}/favorite',[ProductController::class, 'favorite'])->name('products.favorite');
+Route::get('products/{product}/favorite',[ProductController::class, 'favorite'])->name('products,favorite');
 
 Route::resource('products', ProductController::class)->middleware(['auth','verified']);
 Auth::routes(['verify' => true]);
