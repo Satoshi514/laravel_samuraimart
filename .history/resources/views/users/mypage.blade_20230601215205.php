@@ -57,21 +57,21 @@
       <div class="d-flex justify-content-between">
         <div class="row">
           <div class="col-2 d-flex align-items-center">
-            <i class="fas fa-sign-out-alt fa-3x"></i>
+            <i class="fas fa--sign-out-alt fa-3x"></i>
           </div>
-          <div class="col-9 d-flex align-items-center ms-2 mt-3">
+          <div class="col-9 d-flex align-items-canter ms-2 mt-3">
             <div class="d-flex flex-column">
             <label for="user-name">ログアウト</label>
             <p>ログアウトします</p>
           </div>
         </div>
       </div>
-      <div class="d-flex flex-items-center">
+      <div class="d-flex flex-column">
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fas fa-chevron-right fa-2x"></i>
         </a>
 
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        <form id="logout-form" action"{{ route('logout') }}" method="POST" style="display: none;">
            @csrf
         </form> 
       </div>
