@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class Usercontroller extends Controller
 {
     public function mypage() {
         $user = Auth::user();
@@ -40,7 +40,7 @@ class UserController extends Controller
 
         $user->name = $request->input('name') ? $request->input('name') : $user->name;
         $user->email = $request->input('email') ? $request->input('email') : $user->email;
-        $user->postal_code = $request->input('postal_code') ? $request->input('postal_code') : $user->postal_code;
+        $user->postal_code = $request->input('postal_code') ? $request->input('postal_code') : $user->podtal_code;
         $user->address = $request->input('address') ? $request->input('address') : $user->address;
         $user->phone = $request->input('phone') ? $request->input('phone') : $user->phone;
         $user->update();

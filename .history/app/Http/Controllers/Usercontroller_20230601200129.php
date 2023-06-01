@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class Usercontroller extends Controller
 {
     public function mypage() {
         $user = Auth::user();

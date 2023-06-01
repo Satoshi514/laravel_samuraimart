@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('users.edit', compact('user'));
+        return view('users.mypage', compact('user'));
     }
 
     /**
