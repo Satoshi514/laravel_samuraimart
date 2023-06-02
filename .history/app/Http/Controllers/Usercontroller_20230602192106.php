@@ -64,9 +64,4 @@ class UserController extends Controller
 
         return to_route('mypage');
     }
-
-    public function edit_password() {
-
-        return view('users.edit_password');
-    }
 }
