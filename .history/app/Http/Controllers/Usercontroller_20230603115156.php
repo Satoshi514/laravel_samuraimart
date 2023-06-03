@@ -76,6 +76,6 @@ class UserController extends Controller
 
         $favorites = $user->favorites(Product::class)->get();
 
-        return view('users.favorite', compact('favorites'));
+        return view('users.favorite', compact('favolites'));
     }
 }

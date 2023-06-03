@@ -71,11 +71,11 @@ class UserController extends Controller
         return view('users.edit_password');
     }
 
-    public function favorite() {
+    public function favolite() {
         $user = Auth::user();
 
         $favorites = $user->favorites(Product::class)->get();
 
-        return view('users.favorite', compact('favorites'));
+        return view('users.favorite', compact('favolites'));
     }
 }
