@@ -23,8 +23,6 @@ Route::get('/', function () {
 
 Route::controller(CartController::class)->group(function() {
    Route::get('users/carts','index')->name('carts.index');
-   Route::post('users/carts','store')->name('carts.store');
-   Route::delete('users/carts','destroy')->name('carts.destroy');
 });
 Route::controller(UserController::class)->group(function () {
     Route::get('users/mypage', 'mypage')->name('mypage');
