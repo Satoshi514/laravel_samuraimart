@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $carts = Cart::instance(Auth::user()->id)->content();
+        $cart = Cart::instance(Auth::user()->id)->content();
 
         $total = 0;
 
@@ -24,7 +24,7 @@ class CartController extends Controller
             $total += $cart->qty * $cart->price;
         }
 
-        return view('carts.index', compact('carts','total'));
+        return view('carts.index', compact('cart','total'));
     }
 
     /**

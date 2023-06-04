@@ -20,7 +20,7 @@
     <div class="row">
       @foreach($carts as $cart)
       <div class="col-md-2 mt-2">
-        <a href="{{route('products.show',$cart->id)}}">
+        <a href="{{route('products.show',$carts->id)}}">
           <img src="{{ asset('img/dummy.png')}}" class="img-fluid w-100">
         </a>
       </div>

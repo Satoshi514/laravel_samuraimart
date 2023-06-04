@@ -31,7 +31,7 @@
         <h3 class="w-100 mt-4">{{$cart->qty}}</h3>
       </div>
       <div class="w-100 mt-4">
-        <h3 class="w-100 mt-4">¥{{$cart->qty * $cart->price}}</h3>
+        <h3 class="w-100 mt-4">¥{{$product->qty * $product->price}}</h3>
     </div>
     @endforeach
   </div>

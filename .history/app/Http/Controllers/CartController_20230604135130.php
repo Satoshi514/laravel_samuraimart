@@ -24,7 +24,7 @@ class CartController extends Controller
             $total += $cart->qty * $cart->price;
         }
 
-        return view('carts.index', compact('carts','total'));
+        return view('carts.index', compact('cart','total'));
     }
 
     /**
