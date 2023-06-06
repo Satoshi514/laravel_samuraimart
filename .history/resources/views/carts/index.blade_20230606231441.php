@@ -22,7 +22,7 @@
       <div class="col-md-2 mt-2">
         <a href="{{route('products.show',$cart->id)}}">
          @if($cart->options->image)
-         <img src="{{ asset($cart->options->image) }}" class="img-fluid w-100">
+         <img src="{{ asset($cart->options->image) }}" class="img-fluidvw-100">
          @else
          <img src="{{ asset('img/dummy.png')}}" class="img-fluid w-100">
          @endif
