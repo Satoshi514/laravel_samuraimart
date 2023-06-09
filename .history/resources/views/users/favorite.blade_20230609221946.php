@@ -12,7 +12,7 @@
       <div class="col-md-7 mt-2">
         <div class="d-inline-flex">
           <a href="{{route('products.show', $fav->favoriteable_id)}}" class="w-25">
-            @if(App\Models\Product::find($fav->favoriteable_id)->image !=="")
+            @if(App\Models\Product::find($fav->favoriteable_id))->image !=="")
             <img src="{{ asset(\App\Models\Product::find($fav->favoriteable_id)->image) }}" class="img-fluid w-100">
             @else<img src="{{ asset('img/dummy.png')}}" class="img-fluid w-100">
             @endif
