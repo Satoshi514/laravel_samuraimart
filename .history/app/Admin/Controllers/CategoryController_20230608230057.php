@@ -30,13 +30,13 @@ class CategoryController extends AdminController
         $grid->column('id', __('Id'))->sortable();
         $grid->column('name', __('Name'));
         $grid->column('description', __('Description'));
-        $grid->column('major_category_name', __('Major category name'))->editable('select',MajorCategory::all()->pluck('name', 'id'));
+        $grid->column('major_category_name', __('Major category name'));
         $grid->column('created_at', __('Created at'))->sortable();
         $grid->column('updated_at', __('Updated at'))->sortable();
 
         $grid->filter(function($filter) {
             $filter->like('name','カテゴリー名');
-            $filter->in('major_category_name', '親カテゴリー名')->multipleSelect(MajorCategory::all()->pluck('name','id'));
+            $filter->like('major_category_name', '親カテゴリー名');
             $filter->between('created_at', '登録日')->datetime();
         });
 
@@ -56,7 +56,7 @@ class CategoryController extends AdminController
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
         $show->field('description', __('Description'));
-        $show->field('major_category.name', __('Major category name'));
+        $show->field('major_category_name', __('Major category name'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -74,7 +74,7 @@ class CategoryController extends AdminController
 
         $form->text('name', __('Name'));
         $form->textarea('description', __('Description'));
-        $form->select('major_category_id', __('Major Category Name'))->options(MajorCategory::all()->pluck('name','id'));
+        $form->text('major_category_name', __('Major category name'));
 
         return $form;
     }

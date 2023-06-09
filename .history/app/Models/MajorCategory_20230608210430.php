@@ -10,6 +10,6 @@ class MajorCategory extends Model
     use HasFactory;
 
     public function categories() {
-        return $this->hasMany('App\Models\Category');
+        return->$this->hasMany('App\Models\Category');
     }
 }
