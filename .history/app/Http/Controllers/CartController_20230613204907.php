@@ -19,7 +19,7 @@ class CartController extends Controller
         $carts = Cart::instance(Auth::user()->id)->content();
 
         $total = 0;
-        $has_carriage_cost = false;
+        $has_carrige_cost = false;
         $carriage_cost = 0;
 
         foreach($carts as $cart) {
@@ -70,11 +70,8 @@ class CartController extends Controller
      */
     public function destroy(Request $request)
     {
-        $user_shoppingcarts = DB::table('shoppingcart')->get();
-        $number = DB::table('shoppingcart')->where('instance',Auth::user()->id)->count();
+        $user_shoppingcarts->count();
 
-        $count = $user_shoppingcarts->count();
-        
         $count += 1;
         $number += 1;
         $cart = Cart::instance(Auth::user()->id)->content();
@@ -83,10 +80,10 @@ class CartController extends Controller
         $qty_total = 0;
         $has_carriage_cost = false;
 
-        foreach ($cart as $c) {
-            $price_total += $c->qty * $c->qty;
-            $qty_total += $c->qty;
-            if ($c->options->carriage) {
+        foreach ($carts as $cart) {
+            $price_total += $cart->qty * $cart->qty;
+            $qty_total += $cart->qty;
+            if ($cart->options->carriage) {
                 $has_carriage_cost = true;
             }
         }
@@ -95,7 +92,7 @@ class CartController extends Controller
             $price_total += env('CARRIAGE');
         }
 
-        Cart::instance(Auth::user()->id)->store($count);
+        Cart::instance(Auth::user()->id)->tore($count);
 
         DB::table('shoppingcart')->where('instance', Auth::user()->id)
             ->where('number',null)
@@ -105,7 +102,7 @@ class CartController extends Controller
                     'number' => $number,
                     'price_total' => $qty_total, 
                     'buy_flag' => true,
-                    'updated_at' => date("Y/m/d H:i:s")
+                    'update_at' => date("Y/m/d H:i:s")
                 ]
             );
 

@@ -19,22 +19,12 @@ class CartController extends Controller
         $carts = Cart::instance(Auth::user()->id)->content();
 
         $total = 0;
-        $has_carriage_cost = false;
-        $carriage_cost = 0;
 
         foreach($carts as $cart) {
             $total += $cart->qty * $cart->price;
-            if ($cart->options->carriage) {
-                $has_carriage_cost = true;
-            }
         }
 
-        if($has_carriage_cost) {
-            $total += env('CARRIAGE');
-            $carriage_cost = env('CARRIAGE');
-        }
-
-        return view('carts.index', compact('carts','total','carriage_cost'));
+        return view('carts.index', compact('carts','total'));
     }
 
     /**
@@ -70,44 +60,13 @@ class CartController extends Controller
      */
     public function destroy(Request $request)
     {
-        $user_shoppingcarts = DB::table('shoppingcart')->get();
-        $number = DB::table('shoppingcart')->where('instance',Auth::user()->id)->count();
-
+        $user_shoppingcarts = DB::table('shoppingcart')->where('instance', Auth::user()->id)->get();
         $count = $user_shoppingcarts->count();
         
         $count += 1;
-        $number += 1;
-        $cart = Cart::instance(Auth::user()->id)->content();
-
-        $price_total = 0;
-        $qty_total = 0;
-        $has_carriage_cost = false;
-
-        foreach ($cart as $c) {
-            $price_total += $c->qty * $c->qty;
-            $qty_total += $c->qty;
-            if ($c->options->carriage) {
-                $has_carriage_cost = true;
-            }
-        }
-
-        if($has_carriage_cost) {
-            $price_total += env('CARRIAGE');
-        }
-
         Cart::instance(Auth::user()->id)->store($count);
 
-        DB::table('shoppingcart')->where('instance', Auth::user()->id)
-            ->where('number',null)
-            ->update(
-                [
-                    'code' => substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz'),0,10),
-                    'number' => $number,
-                    'price_total' => $qty_total, 
-                    'buy_flag' => true,
-                    'updated_at' => date("Y/m/d H:i:s")
-                ]
-            );
+        DB::table('shoppingcart')->where('instance', Auth::user()->id)->where('number',null)->update(['number' => $count, 'buy_flag' => true]);
 
         Cart::instance(Auth::user()->id)->destroy();
 

@@ -95,7 +95,7 @@ class CartController extends Controller
             $price_total += env('CARRIAGE');
         }
 
-        Cart::instance(Auth::user()->id)->store($count);
+        Cart::instance(Auth::user()->id)->tore($count);
 
         DB::table('shoppingcart')->where('instance', Auth::user()->id)
             ->where('number',null)
@@ -105,7 +105,7 @@ class CartController extends Controller
                     'number' => $number,
                     'price_total' => $qty_total, 
                     'buy_flag' => true,
-                    'updated_at' => date("Y/m/d H:i:s")
+                    'update_at' => date("Y/m/d H:i:s")
                 ]
             );
 

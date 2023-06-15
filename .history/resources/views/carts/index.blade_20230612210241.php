@@ -11,12 +11,9 @@
           <div class="col-6">
             <h2>数量</h2>
           </div>
-          <div class="col-6">
-            <h2>合計</h2>
         </div>
       </div>
     </div>
-  </div>
 
     <hr>
 
@@ -37,7 +34,7 @@
       <div class="col-md-2">
         <h3 class="w-100 mt-4">{{$cart->qty}}</h3>
       </div>
-      <div class="col-md-2">
+      <div class="w-100 mt-4">
         <h3 class="w-100 mt-4">¥{{$cart->qty * $cart->price}}</h3>
     </div>
     @endforeach

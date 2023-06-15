@@ -8,11 +8,6 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-use App\Admin\Extensions\Tools\CsvImport;
-use Goodby\CSV\Import\Standard\Lexer;
-use Goodby\CSV\Import\Standard\Interpreter;
-use Goodby\CSV\Import\Standard\LexerConfig;
-use Illuminate\Http\Request;
 
 class ProductController extends AdminController
 {
@@ -50,10 +45,6 @@ class ProductController extends AdminController
             $filter->in('category_id','カテゴリー')->multipleSelect(Category::all()->pluck('name','id'));
             $filter->equal('recommend_flag','おすすめフラグ')->select(['0' => 'false', '1' => 'true']);
             $filter->equal('carriage_flag','送料フラグ')->select(['0' => 'false','1' => 'true']);
-        });
-
-        $grid->tools(function ($tools) {
-            $tools->append(new CsvImport());
         });
 
         return $grid;
@@ -101,42 +92,5 @@ class ProductController extends AdminController
         $form->switch('carriage_flag', __('Cariage Flag'));
 
         return $form;
-    }
-
-    public function csvImport(Request $request) {
-        $file = $request->file('file');
-        $lexer_config = new LexerConfig();
-        $lexer = new Lexer($lexer_config);
-
-        $interpreter = new Interpreter();
-        $interpreter->unstrict();
-
-        $rows = array();
-        $interpreter->addObserver(function (array $row) use (&$rows) {
-            $rows[] = $row;
-        });
-
-        $lexer->parse($file, $interpreter);
-        foreach ($rows as $key => $value) {
-
-            if (count($value) == 7) {
-                product::create([
-                    'name' => $value[0],
-                    'description' => $value[1],
-                    'price' => $value[2],
-                    'category_id' => $value[3],
-                    'image' => $value[4],
-                    'recommend_flag' => $value[5],
-                    'carriage_flag' => $value[6],
-                ]);
-            }
-        }
-
-        return response()->json(
-            ['data' => '成功'],
-            200,
-            [],
-            JSON_UNESCAPED_UNICODE
-        );
     }
 }
