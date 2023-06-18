@@ -130,7 +130,7 @@ class ProductController extends AdminController
                 ]);
             }
         }
-
+dd('trest');
         return response()->json(
             ['data' => '成功'],
             200,

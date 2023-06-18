@@ -21,7 +21,7 @@ class ShoppingCart extends Model
         foreach($shoppingcarts as $order) {
             $orders [] = [
                 'id' => $order->number,
-                'created_at' => $order->updated_at,
+                'create_at' => $order->updated_at,
                 'total' => $order->price_total,
                 'user_name' => User::find($order->instance)->name,
                 'code' => $order->code

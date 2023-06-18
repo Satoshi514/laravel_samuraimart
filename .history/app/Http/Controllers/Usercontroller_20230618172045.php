@@ -127,11 +127,10 @@ class UserController extends Controller
                 'code' => $cart_info->code,
                 'number' => $num,
                 'price_total' => $cart_info->price_total,
-                'qty' => $cart_info->qty,
-                'buy_flag' => $cart_info->buy_flag,
+                'qty' => $cart_info->buy_flag,
                 'updated_at' => $cart_info->updated_at
             ]
-        );
+            );
 
             return view('users.cart_history_show', compact('cart_contents', 'cart_info'));
     }

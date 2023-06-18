@@ -114,10 +114,8 @@ class UserController extends Controller
     public function cart_history_show(Request $request) {
         $num = $request->num;
         $user_id = Auth::user()->id;
-        $cart_info = DB::table('shoppingcart')->where('instance', $user_id)->where('number', $num)->get()->first();
+        $cart_info = DB::table('shoppingcart')->where('instance', $user_id)->where('number', $sum)->get()->first();
         Cart::instance($user_id)->restore($cart_info->identifier);
-        $cart_contents = Cart::content();
-        Cart::instance($user_id)->store($cart_info->identifier);
         Cart::destroy();
 
         DB::table('shoppingcart')->where('instance', $user_id)
@@ -125,13 +123,12 @@ class UserController extends Controller
         ->update(
             [
                 'code' => $cart_info->code,
-                'number' => $num,
+                'number' => $sum,
                 'price_total' => $cart_info->price_total,
-                'qty' => $cart_info->qty,
-                'buy_flag' => $cart_info->buy_flag,
+                'qty' => $cart_info->buy_flag,
                 'updated_at' => $cart_info->updated_at
             ]
-        );
+            );
 
             return view('users.cart_history_show', compact('cart_contents', 'cart_info'));
     }

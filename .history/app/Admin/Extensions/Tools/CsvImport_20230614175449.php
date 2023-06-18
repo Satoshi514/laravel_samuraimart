@@ -2,7 +2,7 @@
 
 namespace App\Admin\Extensions\Tools;
 
-use Encore\Admin\Admin;
+use Encore\Admin\Admin\Admin;
 use Encore\Admin\Grid\Tools\AbstractTool;
 
 class CsvImport extends AbstractTool {
@@ -11,10 +11,9 @@ class CsvImport extends AbstractTool {
     return <<< SCRIPT
 
     $('.csv-import').click(function() {
-      console.log('test');
       var select = document.getElementById('files');
       document.getElementById("files").click();
-      select.addEventListener('change',function() {
+      select.addEventListener('cange',function() {
         var formdata = new FormData();
         formdata.append("file",$("input[name='product']").prop("files")[0]);
         $.ajaxSetup({
@@ -31,10 +30,6 @@ class CsvImport extends AbstractTool {
           success: function(response) {
             $.pjax.reload("#pjax-container");
             toastr.success('CSVのアップロードが成功しました');
-          },
-          error: function (jqXHR, thrownError) {
-            alert(jqXHR.status);
-            alert(thrownError);
           }
         });
       });

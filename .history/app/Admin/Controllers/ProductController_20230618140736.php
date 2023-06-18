@@ -117,6 +117,7 @@ class ProductController extends AdminController
         });
 
         $lexer->parse($file, $interpreter);
+        dd('test');
         foreach ($rows as $key => $value) {
             if (count($value) == 7) {
                 Product::create([
@@ -130,7 +131,7 @@ class ProductController extends AdminController
                 ]);
             }
         }
-
+dd('trest');
         return response()->json(
             ['data' => '成功'],
             200,

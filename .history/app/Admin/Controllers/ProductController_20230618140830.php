@@ -115,7 +115,7 @@ class ProductController extends AdminController
         $interpreter->addObserver(function (array $row) use (&$rows) {
             $rows[] = $row;
         });
-
+dd('test');
         $lexer->parse($file, $interpreter);
         foreach ($rows as $key => $value) {
             if (count($value) == 7) {
@@ -130,7 +130,7 @@ class ProductController extends AdminController
                 ]);
             }
         }
-
+dd('trest');
         return response()->json(
             ['data' => '成功'],
             200,

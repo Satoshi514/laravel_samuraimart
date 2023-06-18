@@ -3,3 +3,4 @@
      <input type="file" id="files" name="product" style="display: none">
 </div>
 
+<p>test</p>

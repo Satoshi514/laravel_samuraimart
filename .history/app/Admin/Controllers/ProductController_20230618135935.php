@@ -115,9 +115,11 @@ class ProductController extends AdminController
         $interpreter->addObserver(function (array $row) use (&$rows) {
             $rows[] = $row;
         });
+        dd('test');
 
         $lexer->parse($file, $interpreter);
         foreach ($rows as $key => $value) {
+
             if (count($value) == 7) {
                 Product::create([
                     'name' => $value[0],

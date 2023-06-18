@@ -11,7 +11,7 @@ class CsvImport extends AbstractTool {
     return <<< SCRIPT
 
     $('.csv-import').click(function() {
-      console.log('test');
+      console('test');
       var select = document.getElementById('files');
       document.getElementById("files").click();
       select.addEventListener('change',function() {
@@ -31,10 +31,6 @@ class CsvImport extends AbstractTool {
           success: function(response) {
             $.pjax.reload("#pjax-container");
             toastr.success('CSVのアップロードが成功しました');
-          },
-          error: function (jqXHR, thrownError) {
-            alert(jqXHR.status);
-            alert(thrownError);
           }
         });
       });

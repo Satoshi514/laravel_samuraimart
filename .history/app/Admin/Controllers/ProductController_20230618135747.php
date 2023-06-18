@@ -104,6 +104,7 @@ class ProductController extends AdminController
     }
 
     public function csvImport(Request $request) {
+        dd('test');
         $file = $request->file('file');
         $lexer_config = new LexerConfig();
         $lexer = new Lexer($lexer_config);
@@ -118,6 +119,7 @@ class ProductController extends AdminController
 
         $lexer->parse($file, $interpreter);
         foreach ($rows as $key => $value) {
+
             if (count($value) == 7) {
                 Product::create([
                     'name' => $value[0],
