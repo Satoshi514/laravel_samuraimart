@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <span>
-        <a href="{{ route('mypage') }}">マイページ</a> > <a href="{{ route('mypage.cart_history') }}">注文履歴</a> > 注文履歴詳細
+        <a href="{{ route('mypage') }}">マイページ</a> <a href="{{ route('mypage.cart_history') }}">注文履歴</a> > 注文履歴詳細
       </span>
 
       <h1 class="mt-3">注文履歴詳細</h1>
