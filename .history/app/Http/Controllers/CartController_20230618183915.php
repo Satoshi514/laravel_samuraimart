@@ -84,8 +84,8 @@ class CartController extends Controller
         $has_carriage_cost = false;
 
         foreach ($cart as $c) {
-            $price_total += $c->qty * $c->qty;
-            $qty_total  += $c->qty;
+            $price_total = += $c->qty * $c->qty;
+            $qty_total  = += $c->qty;
             if ($c->options->carriage) {
                 $has_carriage_cost = true;
             }
@@ -107,19 +107,6 @@ class CartController extends Controller
                     'buy_flag' => true,
                     'updated_at' => date("Y/m/d H:i:s")
                 ]
-            );
-
-           $pay_jp_secret = env('PAYJP_SECRET_KEY');
-           \Payjp\Payjp::setApiKey($pay_jp_secret);
-
-           $user = Auth::user();
-
-           $res = \Payjp\Charge::create(
-            [
-                "customer" => $user->token,
-                "amount" => $price_total,
-                "currency" => 'jpy'
-            ]
             );
 
         Cart::instance(Auth::user()->id)->destroy();

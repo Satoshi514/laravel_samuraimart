@@ -110,11 +110,11 @@ class CartController extends Controller
             );
 
            $pay_jp_secret = env('PAYJP_SECRET_KEY');
-           \Payjp\Payjp::setApiKey($pay_jp_secret);
+           \Payjp\Payjp::setApiKey($pay_jp-secret);
 
            $user = Auth::user();
 
-           $res = \Payjp\Charge::create(
+           $res = \Payjp\Change::create(
             [
                 "customer" => $user->token,
                 "amount" => $price_total,

@@ -145,7 +145,7 @@ class UserController extends Controller
         $card = [];
         $count = 0;
 
-        if ($user->token != "") {
+        if ($user->token != ""); {
             $result = \Payjp\Customer::retrieve($user->token)->cards->all(array("limit"=>1))->data[0];
             $count = \Payjp\Customer::retrieve($user->token)->cards->all()->count;
 

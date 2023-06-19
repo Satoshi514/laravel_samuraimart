@@ -114,7 +114,7 @@ class CartController extends Controller
 
            $user = Auth::user();
 
-           $res = \Payjp\Charge::create(
+           $res = \Payjp\Change::create(
             [
                 "customer" => $user->token,
                 "amount" => $price_total,

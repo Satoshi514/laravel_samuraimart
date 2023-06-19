@@ -136,7 +136,7 @@ class UserController extends Controller
             return view('users.cart_history_show', compact('cart_contents', 'cart_info'));
     }
 
-    public function register_card(Request $request) {
+    pulic function register_card(Request $request) {
         $user = Auth::user();
 
         $pay_jp_secret = env('PAYJP_SECRET_KEY');
@@ -145,7 +145,7 @@ class UserController extends Controller
         $card = [];
         $count = 0;
 
-        if ($user->token != "") {
+        if ($user->token != ""); {
             $result = \Payjp\Customer::retrieve($user->token)->cards->all(array("limit"=>1))->data[0];
             $count = \Payjp\Customer::retrieve($user->token)->cards->all()->count;
 
