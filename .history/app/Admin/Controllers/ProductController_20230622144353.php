@@ -150,9 +150,8 @@ class ProductController extends AdminController
             $product->reviews->avr('score')->$reviews_avarage;
             $score_total =round($reviews_average*2,0)/2;
            } else {
-            $reviews_count = 0;
+            $reviews_total = 0;
            }
-           return view('products.index',compact('product','score_total','reviews_count'));
         }
     }
      

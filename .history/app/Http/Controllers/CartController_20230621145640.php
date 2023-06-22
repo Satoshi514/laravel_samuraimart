@@ -55,8 +55,8 @@ class CartController extends Controller
                 'options' => [
                 'image' => $request->image,
                 'carriage' => $request->carriage,
-                ]
             ]
+        ]
         );
 
         return to_route('products.show', $request->get('id'));

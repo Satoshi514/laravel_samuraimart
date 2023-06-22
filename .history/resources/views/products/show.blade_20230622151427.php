@@ -70,7 +70,7 @@
             <hr class="w-100">
             <h3 class="float-left">カスタマーレビュー</h3>
         </div>
-        <span class="star-rating" data-rate="{{ $reviews->score }}"></span>
+        <span class="star-rating" data-rate="{{ $review->rate }}"></span>
 
         <div class="offset-1 col-10">
            <div class="row">

@@ -55,8 +55,8 @@ class CartController extends Controller
                 'options' => [
                 'image' => $request->image,
                 'carriage' => $request->carriage,
-                ]
             ]
+        ]
         );
 
         return to_route('products.show', $request->get('id'));
@@ -86,7 +86,7 @@ class CartController extends Controller
         foreach ($carts as $cart) {
             $price_total += $cart->qty * $cart->price;
             $qty_total  += $cart->qty;
-            if ($cart->options->carriage) {
+            if ($c->options->carriage) {
                 $has_carriage_cost = true;
             }
         }

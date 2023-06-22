@@ -231,6 +231,5 @@ label {
   overflow: hidden;
 }
 
-.star-rating[data-rate="5"]::after {
-  width: 100%
+.star-rating[data-rate="5"]::after {width: 100%
 }

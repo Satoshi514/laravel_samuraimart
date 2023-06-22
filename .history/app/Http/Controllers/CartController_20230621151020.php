@@ -52,11 +52,11 @@ class CartController extends Controller
                 'qty' => $request->qty,
                 'price' => $request->price,
                 'weight' => $request->weight,
-                'options' => [
+                'options' => 
                 'image' => $request->image,
                 'carriage' => $request->carriage,
-                ]
             ]
+        ]
         );
 
         return to_route('products.show', $request->get('id'));
@@ -95,7 +95,7 @@ class CartController extends Controller
             $price_total += env('CARRIAGE');
         }
 
-        Cart::instance(Auth::user()->id)->store($count);
+        //Cart::instance(Auth::user()->id)->store($count);
 
         DB::table('shoppingcart')->where('instance', Auth::user()->id)
             ->where('number',null)

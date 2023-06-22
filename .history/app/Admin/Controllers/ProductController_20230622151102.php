@@ -152,7 +152,7 @@ class ProductController extends AdminController
            } else {
             $reviews_count = 0;
            }
-           return view('products.index',compact('product','score_total','reviews_count'));
+           return view('products.index',(compact('product','score_total','reviews_count'));
         }
     }
      

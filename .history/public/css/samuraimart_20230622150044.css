@@ -210,7 +210,7 @@ label {
   background-color: #d94b0e;
 }
 
-.star-rating {
+.star_rating {
   position: relative;
   display: inline-block;
 }
@@ -219,18 +219,13 @@ label {
   content: "★★★★★";
 }
 
-.star-rating::before {
+.star_rating::before {
   color: #ccc;
 }
 
-.star-rating::after {
+.star_rating::after {
   position: absolute;
   left: 0;
   top: 0;
   color: #0fbe9f;
-  overflow: hidden;
-}
-
-.star-rating[data-rate="5"]::after {
-  width: 100%
 }

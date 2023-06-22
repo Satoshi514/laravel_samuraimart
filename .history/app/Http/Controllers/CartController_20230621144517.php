@@ -16,14 +16,14 @@ class CartController extends Controller
      */
     public function index()
     {
-        $carts = Cart::instance(Auth::user()->id)->content();
+        $cart = Cart::instance(Auth::user()->id)->content();
 
         $total = 0;
         $has_carriage_cost = false;
         $carriage_cost = 0;
 
-        foreach($carts as $cart) {
-            $total += $cart->qty * $cart->price;
+        foreach($cart as $c) {
+            $total += $c->qty * $c->price;
             if ($cart->options->carriage) {
                 $has_carriage_cost = true;
             }
@@ -55,9 +55,11 @@ class CartController extends Controller
                 'options' => [
                 'image' => $request->image,
                 'carriage' => $request->carriage,
-                ]
             ]
+        ]
         );
+
+        Cart::instance(Auth::user()->id)->store($count);
 
         return to_route('products.show', $request->get('id'));
     }
@@ -77,16 +79,16 @@ class CartController extends Controller
         
         $count += 1;
         $number += 1;
-        $carts = Cart::instance(Auth::user()->id)->content();
+        $cart = Cart::instance(Auth::user()->id)->content();
 
         $price_total = 0;
         $qty_total = 0;
         $has_carriage_cost = false;
 
-        foreach ($carts as $cart) {
-            $price_total += $cart->qty * $cart->price;
-            $qty_total  += $cart->qty;
-            if ($cart->options->carriage) {
+        foreach ($cart as $c) {
+            $price_total += $c->qty * $c->price;
+            $qty_total  += $c->qty;
+            if ($c->options->carriage) {
                 $has_carriage_cost = true;
             }
         }
@@ -94,8 +96,6 @@ class CartController extends Controller
         if($has_carriage_cost) {
             $price_total += env('CARRIAGE');
         }
-
-        Cart::instance(Auth::user()->id)->store($count);
 
         DB::table('shoppingcart')->where('instance', Auth::user()->id)
             ->where('number',null)

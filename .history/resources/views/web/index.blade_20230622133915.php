@@ -8,7 +8,7 @@
   </div>
   <div class="col-9">
     <h1>おすすめ商品</h1>
-    <span class="star-rating" data-rate="{{ $reviews->rate }}"></span>
+    <span class="star-rating" data-rate="{{ $review->rate }}"></span>
     <div class="row"> 
       @foreach ($recommend_products as $recommend_product)
       <div class="col-4">

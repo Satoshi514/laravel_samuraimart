@@ -33,7 +33,7 @@
                         <div class="col-12">
                             <p class="samuraimart-product-label mt-2">
                                 {{$product->name}}<br>
-                                <span class="star-rating" data-tag-rate="{{ $reviews->rate }}"></span><br>
+                                <span class="star-rating"> </span>
                                 <label>￥{{$product->price}}</label>
                             </p>
                         </div>

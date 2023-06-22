@@ -142,20 +142,16 @@ class ProductController extends AdminController
         public function show (Product $product) {
            $reviews =$product->reviews()->get();
 
-           $score_total=0;
-           $reviews_count= count($reviews);
-           
-           if ($reviews_count > 0) {
-            foreach ($reviews as $review);
-            $product->reviews->avr('score')->$reviews_avarage;
-            $score_total =round($reviews_average*2,0)/2;
-           } else {
-            $reviews_count = 0;
+           $review_total=0
+           $review_count= count($reviews);
+           if ($reviews > 0) {
+            
+            round('score'*2,0)/2;
            }
-           return view('products.index',compact('product','score_total','reviews_count'));
         }
     }
      
 
 
     
+}

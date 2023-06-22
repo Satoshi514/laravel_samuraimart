@@ -55,8 +55,8 @@ class CartController extends Controller
                 'options' => [
                 'image' => $request->image,
                 'carriage' => $request->carriage,
-                ]
             ]
+        ]
         );
 
         return to_route('products.show', $request->get('id'));
@@ -67,7 +67,7 @@ class CartController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
- */
+     */
     public function destroy(Request $request)
     {
         $user_shoppingcarts = DB::table('shoppingcart')->get();
@@ -77,14 +77,14 @@ class CartController extends Controller
         
         $count += 1;
         $number += 1;
-        $carts = Cart::instance(Auth::user()->id)->content();
+        $cart = Cart::instance(Auth::user()->id)->content();
 
         $price_total = 0;
         $qty_total = 0;
         $has_carriage_cost = false;
 
-        foreach ($carts as $cart) {
-            $price_total += $cart->qty * $cart->price;
+        foreach ($cart as $cart) {
+            $price_total += $cart->qty * $cart->qty;
             $qty_total  += $cart->qty;
             if ($cart->options->carriage) {
                 $has_carriage_cost = true;
@@ -95,7 +95,7 @@ class CartController extends Controller
             $price_total += env('CARRIAGE');
         }
 
-        Cart::instance(Auth::user()->id)->store($count);
+        //Cart::instance(Auth::user()->id)->store($count);
 
         DB::table('shoppingcart')->where('instance', Auth::user()->id)
             ->where('number',null)
@@ -103,8 +103,7 @@ class CartController extends Controller
                 [
                     'code' => substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz'),0,10),
                     'number' => $number,
-                    'price_total' => $price_total, 
-                    'qty' => $qty_total,
+                    'price_total' => $qty_total, 
                     'buy_flag' => true,
                     'updated_at' => date("Y/m/d H:i:s")
                 ]

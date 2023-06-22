@@ -95,7 +95,7 @@ class CartController extends Controller
             $price_total += env('CARRIAGE');
         }
 
-        Cart::instance(Auth::user()->id)->store($count);
+        //Cart::instance(Auth::user()->id)->store($count);
 
         DB::table('shoppingcart')->where('instance', Auth::user()->id)
             ->where('number',null)
