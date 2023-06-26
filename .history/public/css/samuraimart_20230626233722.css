@@ -1,0 +1,276 @@
+@font-face {
+  font-family: YuGo;
+  src: local(YuGo-Medium),
+  url(/path/to/YuGo/Medium.woffz) format("woff2"),
+  url(/path/to/YuGo-Medium.woff) format("woff"),
+  url(/path/to/YuGo-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: YuGo;
+  src: local(YuGo-Bold),
+  url(/psth/to/YuGo-Bold.woff2) format("woff2"),
+  url(/path/to/YuGo-Bold.woff) format("woff"),
+  url(/path/to/YuGo-Bold.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+h1 {
+  font-family: YuGo;
+  font-size: 26px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.13px;
+}
+
+h2 {
+  font-family: YuGo;
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+h3 {
+  font-family: YuGo;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.08px;
+  }
+
+big {
+  font-family: Yugo;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.08px;
+}
+
+body {
+  font-family: Yugo;
+  font-size: 14px;
+  font-weight: 500;
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.11px;
+}
+
+caption {
+  font-family: YuGo;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.08px;
+}
+
+label {
+  font-family: YuGo;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #191919;
+}
+
+.samuraimart-login-input {
+  border-radius: 2px;
+  border: solid 1px #b2b2b2;
+  background-color: #ffffff;
+}
+
+.samuraimart-check-label {
+  font-family: YuGo;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+.samuraimart-require-input-label {
+  border-radius: 1px;
+  background-color: #e2001b;
+}
+
+.samuraimart-require-input-label-text {
+  font-family: YuGo;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.samuraimart-submit-button {
+  font-family: YuGo;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  background-color: #0fbe9f;
+}
+
+.samuraimart-login-text {
+  font-family: YuGo;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #0fbe9f;
+}
+
+.samuraimart-header-container {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.samuraimart-header-search-input {
+  border: solid 1px #e5e5e5;
+}
+
+.samuraimart-header-serch-button {
+  background-color: #0fbe9f;
+}
+
+.samuraimart-header-fav-icon {
+  color: #191919;
+}
+
+.samuraimart-header-shoppingcart-icon {
+  color: #ffffff;
+}
+
+.samuraimart-favorite-button {
+  border-radius: 2px;
+  border: solid 1px #0fbe9f;
+  background-color: #ffffff;
+}
+
+.text-favorite {
+  color: #0fbe9f;
+}
+
+.samuraimart-sidebar-category-label {
+  width: 156px;
+  height: 20px;
+  font-family: YuGo;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: #191919;
+}
+
+.samuraimart-favorite-add-cart {
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #0fbe9f;
+}
+
+.review-score-color {
+  color: #0fbe9f;
+}
+
+.review-score-color:focus {
+  color: #0fbe9f;
+}
+
+.star-rating {
+  position: relative;
+  display: inline-block;
+}
+
+.star-rating::before, .star-rating::after { 
+  content: "★★★★★";
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  left: 0; 
+}
+
+.star-rating::before {
+  color:#ccc;
+}
+
+.star-rating::after {
+  color: #0fbe9f;
+  overflow: hidden;
+}
+
+.star-rating[data-rate="5"] {
+  width: 180px;
+}
+
+.star-rating[data-rate="4.5"] {
+  width: 162px;
+}
+
+.star-rating[data-rate="4"] {
+  width: 144px;
+}
+
+.star-rating[data-rate="3.5"] {
+  width: 126px;
+}
+
+.star-rating[data-rate="3"] {
+  width: 108px;
+}
+
+.star-rating[data-rate="2.5"] {
+  width: 90px;
+}
+
+.star-rating[data-rate="2"] {
+  width: 72px;
+}
+
+.star-rating[data-rate="1.5"] {
+  width: 54px;
+}
+
+.star-rating[data-rate="1"] {
+  width: 36px;
+}
+
+.star-rating[data-rate="0.5"] {
+  width: 18px;
+}
+.star-rating[data-rate="0.5"] {
+  width: 0px;
+}
+
+.samuraimart-delete-submit-button {
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #d94b0e;
+}
