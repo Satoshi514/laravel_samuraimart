@@ -31,14 +31,14 @@
                         @endif
                     </a>
                     <div class="row">
-                        <div class="col-12">
+                        
                             <p class="samuraimart-product-label mt-2">
                                 {{$product->name}}<br>
                                 <h3 class="star-rating" data-rate="3"></h3>
-                                <span class="review-score">{{ $product->reviews->count() }}</span><br>
+                                <span class="review-score">{{ $product->reviews->count() }}</span>
                                 <label>￥{{$product->price}}</label>
                             </p>
-                        </div>
+                        
                     </div>
                 </div>
                 @endforeach

@@ -22,7 +22,7 @@
           <div class="col-12">
           {{ $recommend_product->name }}<br>
           <h3 class="star-rating" data-rate="3"></h3>
-          <span class="review-score">{{ $recommend_product->reviews->count() }}</span>
+          <span class="review-score">{{ $recommend_product->count() }}</span>
             <p class="samuraimart-product-label mt-2">
               <label>¥{{ $recommend_product->price }}</label>
             </p>

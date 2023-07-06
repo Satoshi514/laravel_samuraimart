@@ -201,7 +201,7 @@ label {
 }
 
 .review-score {
-  margin: 100px;
+  float: left;
 }
 
 .review-score-color {

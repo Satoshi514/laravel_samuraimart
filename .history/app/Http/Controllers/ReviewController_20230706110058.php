@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
-use illuminate\Support\Fadecas\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -25,8 +25,11 @@ class ReviewController extends Controller
         $review->content = $request->input('content');
         $review->product_id = $request->input('product_id');
         $review->user_id = Auth::user()->id;
+        $review->score = $request->input('score');
         $review->save();
 
         return back();
     }
 }
+
+

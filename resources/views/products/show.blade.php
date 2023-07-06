@@ -16,7 +16,7 @@
                 <h1 class="">
                     {{$product->name}}
                 </h1>
-                <h3 class="star-rating" data-rate="3"></h3>
+                <h3 class="star-rating" data-rate="{{ $review_average }}"></h3>
                 <span class="review-score">{{ $review_count }}</span>
                 <p class="product-description">
                     {{$product->description}}
@@ -75,7 +75,7 @@
         </div>
         
         <div class="offset-1 col-10">
-        <h3 class="star-rating" data-rate="3"></h3>
+        <h3 class="star-rating" data-rate="{{ review_average }}"></h3>
         <span class="review-score">{{ $review_count }}</span>
            <div class="row">
             @foreach($reviews as $review)

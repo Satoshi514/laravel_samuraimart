@@ -196,10 +196,87 @@ label {
   background-color: #0fbe9f;
 }
 
+.product-description {
+  margin-top: 15px;
+}
+
+.review-score {
+  float: left;
+}
+
 .review-score-color {
   color: #0fbe9f;
 }
 
 .review-score-color:focus {
   color: #0fbe9f;
+}
+
+.star-rating {
+  position: relative;
+}
+
+.star-rating::before, .star-rating::after { 
+  content: "★★★★★";
+  position: absolute;
+  display: inline-block;
+  top: 5px;
+  left: 0;
+  color:#e5e5e5;
+}
+
+.star-rating::after {
+  color: #0fbe9f;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.star-rating[data-rate="5"]::after {
+  width: 75px;
+}
+
+.star-rating[data-rate="4.5"]::after {
+  width: 67.5px;
+}
+
+.star-rating[data-rate="4"]::after {
+  width: 60px;
+}
+
+.star-rating[data-rate="3.5"]::after {
+  width: 52.5px;
+}
+
+.star-rating[data-rate="3"]::after {
+  width: 45px;
+}
+
+.star-rating[data-rate="2.5"]::after {
+  width: 37.5px;
+}
+
+.star-rating[data-rate="2"]::after {
+  width: 30px;
+}
+
+.star-rating[data-rate="1.5"]::after {
+  width: 22.5px;
+}
+
+.star-rating[data-rate="1"]::after {
+  width: 15px;
+}
+
+.star-rating[data-rate="0.5"]::after {
+  width: 7.5px;
+}
+
+.star-rating[data-rate="0"]::after {
+  width: 0px;
+}
+
+.samuraimart-delete-submit-button {
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #d94b0e;
 }
