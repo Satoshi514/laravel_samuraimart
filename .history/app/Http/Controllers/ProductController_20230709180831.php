@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\MajorCategory;
 use Illuminate\Http\Request;
-use Illuminate\Models\MajorCategory;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -80,8 +80,21 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $reviews = $product->reviews()->get();
+        $score_total=0;
+        $review_count= count($reviews);
 
-        return view('products.show', compact('product', 'reviews'));
+        if ($review_count > 0) {
+         foreach ($reviews as $review) {
+             $score_total += $review->score;         
+            }
+
+         $score_total =round($score_total/0.5,0)*0.5;
+         $review_average = $score_total/$review_count;
+        } else {
+         $review_average = 0;
+        }
+dd($review_average);
+        return view('products.show',compact('product', 'reviews','review_average','review_count'));
     }
 
     /**

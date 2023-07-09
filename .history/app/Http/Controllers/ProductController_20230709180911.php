@@ -32,7 +32,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $major_categories = MajorCategory::all();
 
-        return view('products.index', compact('products','category','major_category','categories','major_categories','total_count',));
+        return view('products.index', compact('products','category','major_category','categories','major_categories','total_count'));
     }
 
         public function favorite(Product $product) {
@@ -93,8 +93,7 @@ class ProductController extends Controller
         } else {
          $review_average = 0;
         }
-         $review_average = round($review_average*2)/2;
-         
+
         return view('products.show',compact('product', 'reviews','review_average','review_count'));
     }
 

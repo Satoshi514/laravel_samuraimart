@@ -32,7 +32,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $major_categories = MajorCategory::all();
 
-        return view('products.index', compact('products','category','major_category','categories','major_categories','total_count'));
+        return view('products.index', compact('products','category','major_category','categories','major_categories','total_count',));
     }
 
         public function favorite(Product $product) {
@@ -80,8 +80,22 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $reviews = $product->reviews()->get();
+        $score_total=0;
+        $review_count= count($reviews);
 
-        return view('products.show', compact('product', 'reviews'));
+        if ($review_count > 0) {
+         foreach ($reviews as $review) {
+             $score_total += $review->score;         
+            }
+
+         $score_total =round($score_total/0.5,0)*0.5;
+         $review_average = $score_total/$review_count;
+        } else {
+         $review_average = 0;
+        }
+         $review_average = round($review_average*2)/2;
+         
+        return view('products.show',compact('product', 'reviews','review_average','review_count'));
     }
 
     /**

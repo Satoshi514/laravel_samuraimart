@@ -17,6 +17,7 @@
             Sort By
             @sortablelink('id','ID');
             @sortablelink('price', 'Price');
+            @sortablelink('review','Review');
         </div>
         <div class="container mt-4">
             <div class="row w-100">
@@ -33,6 +34,8 @@
                         <div class="col-12">
                             <p class="samuraimart-product-label mt-2">
                                 {{$product->name}}<br>
+                                <h3 class="star-rating" data-rate="{{ $product->reviews->avg('score')}}"></h3>
+                                <span class="review-score">{{ $product->reviews->count() }}</span><br>
                                 <label>￥{{$product->price}}</label>
                             </p>
                         </div>

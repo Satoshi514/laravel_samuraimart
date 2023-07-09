@@ -30,7 +30,7 @@ class Product extends Model
     }
 
     public function reviewsSortable($query,$direction) {
-        return $query->withAvg('reviews','score')->orderBy('reviews_avg_score',$direction);
+        return $query->withAvg('reviews','score')->orderBy('reviews_avg_score','$direction');
     }
 
 }

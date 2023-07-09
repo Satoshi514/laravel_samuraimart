@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\MajorCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,15 +22,17 @@ class ProductController extends Controller
             $products = Product::where('category_id',$request->category)->sortable()->paginate(10);
             $total_count = Product::where('category_id', $request->category)->count();
             $category = Category::find($request->category);
+            $major_category = MajorCategory::find($category->major_category_id);
         } else {
             $products = Product::sortable()->paginate(10);
             $total_count = "";
             $category = null;
+            $major_category = null;
         }
         $categories = Category::all();
-        $major_category_names = Category::pluck('major_category_name')->unique();
+        $major_categories = MajorCategory::all();
 
-        return view('products.index', compact('products','category','categories','major_category_names','total_count'));
+        return view('products.index', compact('products','category','major_category','categories','major_categories','total_count'));
     }
 
         public function favorite(Product $product) {
@@ -77,8 +80,22 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $reviews = $product->reviews()->get();
+        $score_total=0;
+        $review_count= count($reviews);
 
-        return view('products.show', compact('product', 'reviews'));
+        if ($review_count > 0) {
+         foreach ($reviews as $review) {
+             $score_total += $review->score;         
+            }
+
+         $score_total =round($score_total/0.5,0)*0.5;
+         $review_average = $score_total/$review_count;
+        } else {
+         $review_average = 0;
+        }
+         $review_average = round($review_average*2)/2;
+         dd($review_average);
+        return view('products.show',compact('product', 'reviews','review_average','review_count'));
     }
 
     /**
